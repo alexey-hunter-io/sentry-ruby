@@ -63,6 +63,13 @@ jobs:
       versions: ${{ needs.ruby-versions.outputs.versions }}
     secrets: inherit
 
+  solid_queue-tests:
+    needs: ruby-versions
+    uses: ./.github/workflows/sentry_solid_queue_test.yml
+    with:
+      versions: ${{ needs.ruby-versions.outputs.versions }}
+    secrets: inherit
+
   codecov:
     name: CodeCov
     runs-on: ubuntu-latest
@@ -70,6 +77,7 @@ jobs:
       - ruby-tests
       - rails-tests
       - sidekiq-tests
+      - solid_queue-tests
       - delayed_job-tests
       - resque-tests
       - opentelemetry-tests

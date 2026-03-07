@@ -1,0 +1,14 @@
+# frozen_string_literal: true
+
+source "https://rubygems.org"
+git_source(:github) { |name| "https://github.com/#{name}.git" }
+
+eval_gemfile "../Gemfile.dev"
+
+gemspec
+
+gem "sentry-ruby", path: "../sentry-ruby"
+gem "sentry-rails", path: "../sentry-rails"
+
+gem "solid_queue"
+gem "rails", ">= 7.1"
